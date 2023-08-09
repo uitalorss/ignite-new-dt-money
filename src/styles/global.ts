@@ -23,4 +23,14 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 1rem;
     line-height: 160%;
   }
+
+  h3{
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  h2{
+    font-size: 2rem;
+    font-weight: 700;
+  }
 `
