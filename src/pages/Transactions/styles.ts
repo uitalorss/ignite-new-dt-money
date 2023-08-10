@@ -7,8 +7,8 @@ export const PageContainer = styled.main`
 export const TransactionsContainer = styled.section`
   width: 100%;
   max-width: 1280px;
-  margin: 4rem auto 0;
   padding: 0 1.5rem;
+  margin: 1.5rem auto 0;
 `
 
 export const TableContainer = styled.table`
