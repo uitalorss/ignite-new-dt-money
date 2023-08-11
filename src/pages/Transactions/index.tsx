@@ -1,10 +1,31 @@
+import { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import { Summary } from "../../components/Summary";
 import { SearchForm } from "./components/SearchForm";
 import { PageContainer, PriceDetails, TableContainer, TransactionsContainer } from "./styles";
 
+interface Transaction {
+  id: number;
+  description: string;
+  type: "income" | "outcome";
+  value: number;
+  category: string;
+  createdAt: string;
+}
 
 export function Transactions() {
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
+
+  async function loadTransactions() {
+    const response = await fetch("http://localhost:3333/transactions/");
+    const data = await response.json();
+    setTransactions(data);
+  }
+
+  useEffect(() => {
+    loadTransactions()
+  }, [])
+
   return (
     <PageContainer>
       <Header />
@@ -13,26 +34,20 @@ export function Transactions() {
       <TransactionsContainer>
         <TableContainer>
           <tbody>
-            <tr>
-              <td>Desenvolvimento de site</td>
-              <td>
-                <PriceDetails variant="income">
-                  R$ 12.000,00
-                </PriceDetails>
-              </td>
-              <td>Serviço</td>
-              <td>10/08/2023</td>
-            </tr>
-            <tr>
-              <td>Varanda Burguer</td>
-              <td>
-                <PriceDetails variant="outcome">
-                  - R$ 60,00
-                </PriceDetails>
-              </td>
-              <td>Alimentação</td>
-              <td>13/08/2023</td>
-            </tr>
+            {transactions.map((item) => {
+              return (
+                <tr>
+                  <td>{item.description}</td>
+                  <td>
+                    <PriceDetails variant={item.type}>
+                      {item.value}
+                    </PriceDetails>
+                  </td>
+                  <td>{item.category}</td>
+                  <td>{item.createdAt}</td>
+                </tr>
+              )
+            })}
           </tbody>
         </TableContainer>
       </TransactionsContainer>
