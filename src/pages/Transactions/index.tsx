@@ -4,6 +4,7 @@ import { Summary } from "../../components/Summary";
 import { SearchForm } from "./components/SearchForm";
 import { PageContainer, PriceDetails, TableContainer, TransactionsContainer } from "./styles";
 import { TransactionsContext } from "../../contexts/TransactionsContext";
+import { dateFormatter, priceFormatter } from "../../utils/formatter";
 
 
 export function Transactions() {
@@ -23,11 +24,11 @@ export function Transactions() {
                   <td>{item.description}</td>
                   <td>
                     <PriceDetails variant={item.type}>
-                      {item.value}
+                      {priceFormatter.format(item.value)}
                     </PriceDetails>
                   </td>
                   <td>{item.category}</td>
-                  <td>{item.createdAt}</td>
+                  <td>{dateFormatter.format(new Date(item.createdAt))}</td>
                 </tr>
               )
             })}
