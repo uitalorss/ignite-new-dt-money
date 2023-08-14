@@ -34,6 +34,7 @@ export const Content = styled(Dialog.Content)`
       border: 1px solid transparent;
       border-radius: 6px;
       outline: none;
+      color: ${props => props.theme["gray-300"]};
       &::placeholder{
         color: ${props => props.theme["gray-500"]};
       }
