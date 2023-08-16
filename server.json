@@ -6,7 +6,7 @@
       "type": "income",
       "value": 12000,
       "category": "Serviço",
-      "createdAt": "2023-08-11T23:36:40.992Z" 
+      "createdAt": "2023-08-11T23:36:40.992Z"
     },
     {
       "id": 2,
@@ -14,7 +14,23 @@
       "type": "outcome",
       "value": 60,
       "category": "Alimentação",
-      "createdAt": "2023-08-11T23:46:40.992Z" 
+      "createdAt": "2023-08-11T23:46:40.992Z"
+    },
+    {
+      "description": "Freela",
+      "value": 3000,
+      "category": "Serviço",
+      "type": "income",
+      "createdAt": "2023-08-15T23:52:13.266Z",
+      "id": 3
+    },
+    {
+      "description": "Pão",
+      "value": 7,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2023-08-16T00:10:33.110Z",
+      "id": 4
     }
   ]
 }
