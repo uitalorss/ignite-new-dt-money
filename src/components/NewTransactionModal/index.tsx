@@ -16,8 +16,10 @@ const newTransactionModalSchema = z.object({
 
 type NewtransactionModalForm = z.infer<typeof newTransactionModalSchema>
 
-
-export function NewTransactionModal() {
+interface NewTransactionModalProps {
+  dismissModal: () => void;
+}
+export function NewTransactionModal({ dismissModal }: NewTransactionModalProps) {
   const { createTransaction } = useContext(TransactionsContext);
   const { register, handleSubmit, control, reset } = useForm<NewtransactionModalForm>({
     resolver: zodResolver(newTransactionModalSchema),
@@ -29,6 +31,7 @@ export function NewTransactionModal() {
   function handleNewTransaction(data: NewtransactionModalForm) {
     createTransaction(data);
     reset();
+    dismissModal();
   }
   return (
     <Dialog.Portal>
